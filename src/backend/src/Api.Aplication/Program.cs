@@ -1,4 +1,4 @@
-using Api.Aplication.Configs;
+using Api.UPX4.Configs;
 using Infra.UPX4.Ioc.DependencyInjection;
 
 

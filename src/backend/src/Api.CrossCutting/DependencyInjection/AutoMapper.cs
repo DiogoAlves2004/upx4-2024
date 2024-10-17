@@ -1,4 +1,4 @@
-using Api.CrossCutting.Mappings;
+using Infra.UPX4.Ioc.Mappings;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
