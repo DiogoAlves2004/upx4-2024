@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20241017014515_cricao_tabela_pontosdeacessibilidade")]
+    [Migration("20241017014821_cricao_tabela_pontosdeacessibilidade")]
     partial class cricao_tabela_pontosdeacessibilidade
     {
         /// <inheritdoc />
@@ -19,6 +19,43 @@ namespace Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.19");
+
+            modelBuilder.Entity("Infra.UPX4.Domain.Entities.PontoDeAcessibilidadeEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("cordx")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("cordy")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("descricaopontodeacessibilidade")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("idicone")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("idusuariocriador")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PontosDeAcessibilidade");
+                });
 
             modelBuilder.Entity("Infra.UPX4.Domain.Entities.UserEntity", b =>
                 {
@@ -56,12 +93,12 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f9469786-3477-40fd-91a0-513831550931"),
-                            CreateAt = new DateTime(2024, 10, 16, 22, 45, 15, 195, DateTimeKind.Local).AddTicks(342),
+                            Id = new Guid("04ae83ff-6d39-42ff-9cef-7ca5a0c8bd92"),
+                            CreateAt = new DateTime(2024, 10, 16, 22, 48, 21, 645, DateTimeKind.Local).AddTicks(6972),
                             Email = "adm@mail.com",
                             Name = "Adm",
                             Password = "adm123",
-                            UpdatedAt = new DateTime(2024, 10, 16, 22, 45, 15, 195, DateTimeKind.Local).AddTicks(362)
+                            UpdatedAt = new DateTime(2024, 10, 16, 22, 48, 21, 645, DateTimeKind.Local).AddTicks(6988)
                         });
                 });
 #pragma warning restore 612, 618
