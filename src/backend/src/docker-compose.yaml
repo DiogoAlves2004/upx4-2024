@@ -1,0 +1,16 @@
+services:
+  myapp:
+    image: mcr.microsoft.com/dotnet/sdk:7.0
+    ports:
+      - "5212:5212"
+      - "80:3000"
+      - "8080:3001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5212
+      - ASPNETCORE_HTTPS_PORTS=5212
+      - ASPNETCORE_URLS=http://+:80;https://+:443
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: bash -c "dotnet dev-certs https --trust && dotnet restore && dotnet build -c Release -o /app/build && dotnet run --project ./Api.Aplication/application.csproj"
