@@ -1,0 +1,37 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+@import "primeflex/primeflex.css";
+
+
+
+//? Verificar se faz sentido usarmos o theming
+@import "primeflex/themes/primeone-light.css";
+// @import "primeflex/themes/primeone-dark.css";
+
+
+
+
+//Variaveis globais
+$primary-color: #34619B;
+$secondary-color: #f2f2f2;
+$font-size-base: 12px;
+:root {
+  --primary-color: #34619B;
+  --secondary-color: #f2f2f2;
+  --font-size-base: 12px;
+}
+
+
+html,body{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: $font-size-base;
+}
+
+body{
+  background-color: #fff;
+}
+
+

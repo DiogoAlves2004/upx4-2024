@@ -9,6 +9,9 @@ namespace Infra.UPX4.Ioc.Mappings
         public EntityToDtoProfile()
         {
             CreateMap<UserDto, UserEntity>().ReverseMap();
+
+            CreateMap<PontoDeAcessibilidadeDto, PontoDeAcessibilidadeEntity>().ReverseMap();
+
         }
     }
 }

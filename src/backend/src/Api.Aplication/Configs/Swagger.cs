@@ -25,12 +25,12 @@ namespace Api.UPX4.Configs
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "STUDY API",
-                    Description = "DDD",
+                    Title = "UPX4 API",
+                    Description = "API para prover microservico de gestão de pontos de acessibilidade",
                     Contact = new OpenApiContact
                     {
-                        Name = "savio",
-                        Email = "savio.brito.prestserv@petrobras.com.br",
+                        Name = "Diogo Alves",
+                        Email = "alvessilva524@gmail.com",
                     },
                 });
 

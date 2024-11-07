@@ -1,8 +1,7 @@
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Api.Data.Context
+namespace Infra.UPX4.Data.Context
 {
     public class ContextFactory : IDesignTimeDbContextFactory<MyContext>
     {

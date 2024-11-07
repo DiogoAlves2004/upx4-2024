@@ -2,7 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
-using Api.Domain.Mappers;
+using Infra.UPX4.Domain.Mappers;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
