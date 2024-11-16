@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.UPX4.Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20241115204313_Inicial")]
-    partial class Inicial
+    [Migration("20241116173543_initial-migration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.19");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
             modelBuilder.Entity("Infra.UPX4.Domain.Entities.PontoDeAcessibilidadeEntity", b =>
                 {
@@ -91,12 +91,12 @@ namespace Infra.UPX4.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5381c117-ce81-4de6-bed2-4d251a7bf8e8"),
-                            CreateAt = new DateTime(2024, 11, 15, 17, 43, 13, 825, DateTimeKind.Local).AddTicks(7380),
+                            Id = new Guid("6cd0fcd9-454b-46db-b9e3-ef39e4a872db"),
+                            CreateAt = new DateTime(2024, 11, 16, 14, 35, 42, 31, DateTimeKind.Local).AddTicks(7022),
                             Email = "adm@mail.com",
                             Name = "Adm",
                             Password = "adm123",
-                            UpdatedAt = new DateTime(2024, 11, 15, 17, 43, 13, 825, DateTimeKind.Local).AddTicks(7398)
+                            UpdatedAt = new DateTime(2024, 11, 16, 14, 35, 42, 36, DateTimeKind.Local).AddTicks(4202)
                         });
                 });
 #pragma warning restore 612, 618

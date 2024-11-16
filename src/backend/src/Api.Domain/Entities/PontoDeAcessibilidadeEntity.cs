@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Infra.UPX4.Domain.Entities
 {
     public class PontoDeAcessibilidadeEntity : BaseEntity
