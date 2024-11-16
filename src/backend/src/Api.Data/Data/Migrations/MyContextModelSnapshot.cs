@@ -29,13 +29,11 @@ namespace Data.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("cordx")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<double>("cordx")
+                        .HasColumnType("REAL");
 
-                    b.Property<string>("cordy")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<double>("cordy")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("descricaopontodeacessibilidade")
                         .IsRequired()
@@ -90,12 +88,12 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("04ae83ff-6d39-42ff-9cef-7ca5a0c8bd92"),
-                            CreateAt = new DateTime(2024, 10, 16, 22, 48, 21, 645, DateTimeKind.Local).AddTicks(6972),
+                            Id = new Guid("5381c117-ce81-4de6-bed2-4d251a7bf8e8"),
+                            CreateAt = new DateTime(2024, 11, 15, 17, 43, 13, 825, DateTimeKind.Local).AddTicks(7380),
                             Email = "adm@mail.com",
                             Name = "Adm",
                             Password = "adm123",
-                            UpdatedAt = new DateTime(2024, 10, 16, 22, 48, 21, 645, DateTimeKind.Local).AddTicks(6988)
+                            UpdatedAt = new DateTime(2024, 11, 15, 17, 43, 13, 825, DateTimeKind.Local).AddTicks(7398)
                         });
                 });
 #pragma warning restore 612, 618

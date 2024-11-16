@@ -13,6 +13,7 @@ namespace Infra.UPX4.Ioc.DependencyInjection
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             DataBaseDependencies.Inject(serviceCollection);
             UsersDependencies.Inject(serviceCollection);
+            PontoDeAcessibilidadeDependencie.Inject(serviceCollection);
             AuthorizationDependencies.Inject(serviceCollection, tokenConfiguration);
             AutoMapperDependencies.Inject(serviceCollection);
         }

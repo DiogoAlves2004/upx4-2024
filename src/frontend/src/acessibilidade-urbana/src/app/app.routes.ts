@@ -5,5 +5,9 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./features/loguin/loguin.component').then(m => m.LoginComponent)
+  },
+  {
+    path: 'mapa',
+    loadComponent: () => import('./features/mapa/mapa.component').then(m => m.MapaComponent)
   }
 ];

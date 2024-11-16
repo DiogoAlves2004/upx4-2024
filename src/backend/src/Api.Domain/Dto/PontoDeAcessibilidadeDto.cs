@@ -12,10 +12,10 @@ namespace Infra.UPX4.Domain.Dto
         public string descricaopontodeacessibilidade { get; set; }
 
         [Required]
-        public string cordx { get; set; }
+        public double cordx { get; set; }
 
         [Required]
-        public string cordy { get; set; }
+        public double cordy { get; set; }
 
         [Required]
         public Guid idusuariocriador { get; set; }

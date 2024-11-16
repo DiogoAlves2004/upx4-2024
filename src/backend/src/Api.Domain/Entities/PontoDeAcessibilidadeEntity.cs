@@ -6,9 +6,9 @@ namespace Infra.UPX4.Domain.Entities
     {
         public required string descricaopontodeacessibilidade { get; set; }
 
-        public required string cordx { get; set; }
+        public required double cordx { get; set; }
 
-        public required string cordy { get; set; }
+        public required double cordy { get; set; }
 
         public required string idusuariocriador { get; set; }
 

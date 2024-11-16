@@ -6,18 +6,22 @@ using Infra.UPX4.Domain.Interfaces.Services;
 using Infra.UPX4.Domain.Models;
 
 using Flunt.Notifications;
+using System.Diagnostics.CodeAnalysis;
+using System.Data;
 
 namespace Infra.UPX4.Service.Services
 {
     public class PontoDeAcessibilidadeService : IPontoDeAcessibilidadeService
     {
         private IRepository<PontoDeAcessibilidadeEntity> _pontoDeAcessibilidadeRepository;
+        private readonly IPontoDeAcessibilidadeRepository _repository;
         private readonly IMapper _mapper;
 
 
-        public PontoDeAcessibilidadeService(IRepository<PontoDeAcessibilidadeEntity> pontoRepository, IMapper mapper)
+        public PontoDeAcessibilidadeService(IRepository<PontoDeAcessibilidadeEntity> pontoRepository, IPontoDeAcessibilidadeRepository repository, IMapper mapper)
         {
             _pontoDeAcessibilidadeRepository = pontoRepository;
+            _repository = repository;
             _mapper = mapper;
         }
 
@@ -44,6 +48,12 @@ namespace Infra.UPX4.Service.Services
         public Task<(bool, List<Notification>)> Excluir(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<List<PontoDeAcessibilidadeEntity>> GetPontosDentroDosLimitesAsync(double north, double south, double east, double west)
+        {
+            var result = await _repository.GetPontosDentroDosLimitesAsync(north, south, east, west);
+            return result;
         }
     }
 }

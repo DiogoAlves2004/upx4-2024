@@ -2,9 +2,11 @@
 
 using System.Net;
 using Infra.UPX4.Domain.Dto;
+using Infra.UPX4.Domain.Interfaces.Repositories;
 using Infra.UPX4.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.Sqlite;
 
 
 namespace Api.UPX4.Controllers
@@ -49,8 +51,28 @@ namespace Api.UPX4.Controllers
             }
 
         }
-        
-     
-    
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetPontosDeAcessibilidade(
+        [FromQuery] double north,
+        [FromQuery] double south,
+        [FromQuery] double east,
+        [FromQuery] double west)
+        {
+            var pontos = await _pontoService.GetPontosDentroDosLimitesAsync(north, south, east, west);
+
+            if (pontos == null || pontos.Count == 0)
+            {
+                return NotFound("Nenhum ponto de acessibilidade encontrado.");
+            }
+
+            return Ok(pontos);
+        }
     }
+
+
+
+
 }

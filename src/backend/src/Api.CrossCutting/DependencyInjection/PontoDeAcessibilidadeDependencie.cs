@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Infra.UPX4.Ioc.DependencyInjection
 {
-    public class PontoDeAcessibilidade
+    public class PontoDeAcessibilidadeDependencie
     {
 
         public static void Inject(IServiceCollection serviceCollection)

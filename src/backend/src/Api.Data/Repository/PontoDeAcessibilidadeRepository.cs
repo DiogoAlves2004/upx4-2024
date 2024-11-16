@@ -15,5 +15,15 @@ namespace Infra.UPX4.Data.Repository
             _dataset = _context.Set<PontoDeAcessibilidadeEntity>();
         }
 
+        public async Task<List<PontoDeAcessibilidadeEntity>> GetPontosDentroDosLimitesAsync(double north, double south, double east, double west)
+        {
+            return await _dataset
+                .Where(p => p.cordy >= south &&
+                            p.cordy <= north &&
+                            p.cordx >= west &&
+                            p.cordx <= east)
+                .ToListAsync();
+        }
+
     }
 }

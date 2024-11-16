@@ -8,9 +8,9 @@ namespace Infra.UPX4.Domain.Models
 
         public string? descricaopontodeacessibilidade { get; set; }
 
-        public string cordx { get; set; }
+        public double cordx { get; set; }
 
-        public string cordy { get; set; }
+        public double cordy { get; set; }
 
         public Guid idusuariocriador { get; set; }
 
