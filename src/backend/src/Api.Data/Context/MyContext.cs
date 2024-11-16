@@ -1,6 +1,7 @@
 using Infra.UPX4.Data.Mapping;
 using Infra.UPX4.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Xml;
 
 namespace Infra.UPX4.Data.Context
 {
@@ -16,19 +17,13 @@ namespace Infra.UPX4.Data.Context
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<UserEntity>(new UserEntityMap().Configure);
+   
 
-            modelBuilder.Entity<UserEntity>().HasData(
-                new UserEntity
-                {
-                    Id = Guid.NewGuid(),
-                    Password = "adm123",
-                    Name = "Adm",
-                    Email = "adm@mail.com",
-                    CreateAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                }
-            );
+         
 
+
+            modelBuilder.Entity<PontoDeAcessibilidadeEntity>(new PontoDeAcessibilidadeEntityMap().Configure);
+        
 
 
 

@@ -16,7 +16,7 @@ namespace Infra.UPX4.Data.Mapping
             builder.Property(u => u.idusuariocriador).IsRequired();
 
 
-    }
+        }
 
-}
+    }
 }

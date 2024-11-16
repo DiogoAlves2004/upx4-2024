@@ -4,10 +4,11 @@ using Infra.UPX4.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Data.Migrations
+namespace Infra.UPX4.Data.Migrations
 {
     [DbContext(typeof(MyContext))]
     partial class MyContextModelSnapshot : ModelSnapshot
@@ -15,68 +16,61 @@ namespace Data.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Infra.UPX4.Domain.Entities.PontoDeAcessibilidadeEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("CreateAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<double>("cordx")
-                        .HasColumnType("REAL");
+                        .HasColumnType("double precision");
 
                     b.Property<double>("cordy")
-                        .HasColumnType("REAL");
+                        .HasColumnType("double precision");
 
                     b.Property<string>("descricaopontodeacessibilidade")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
 
                     b.Property<string>("idicone")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("idusuariocriador")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("PontosDeAcessibilidade");
+                    b.ToTable("pontodeacessibilidade", (string)null);
                 });
 
             modelBuilder.Entity("Infra.UPX4.Domain.Entities.UserEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("CreateAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("character varying(60)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -84,17 +78,6 @@ namespace Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Users", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("6cd0fcd9-454b-46db-b9e3-ef39e4a872db"),
-                            CreateAt = new DateTime(2024, 11, 16, 14, 35, 42, 31, DateTimeKind.Local).AddTicks(7022),
-                            Email = "adm@mail.com",
-                            Name = "Adm",
-                            Password = "adm123",
-                            UpdatedAt = new DateTime(2024, 11, 16, 14, 35, 42, 36, DateTimeKind.Local).AddTicks(4202)
-                        });
                 });
 #pragma warning restore 612, 618
         }

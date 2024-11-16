@@ -11,7 +11,22 @@ builder.Services.AddEndpointsApiExplorer();
 
 InjectAllDependencies.Configure(builder.Services, config.AuthToken());
 
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin() // Permite todas as origens
+              .AllowAnyMethod() // Permite todos os métodos (GET, POST, etc.)
+              .AllowAnyHeader(); // Permite todos os cabeçalhos
+    });
+});
+
 var app = builder.Build();
+
+// Use o CORS na aplicação
+app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
 {

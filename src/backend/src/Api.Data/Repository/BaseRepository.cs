@@ -27,7 +27,6 @@ namespace Infra.UPX4.Data.Repository
                     item.Id = Guid.NewGuid();
                 }
 
-                item.CreateAt = DateTime.UtcNow;
 
                 _dataset.Add(item);
 
@@ -70,8 +69,7 @@ namespace Infra.UPX4.Data.Repository
                     return null;
                 }
 
-                item.UpdatedAt = DateTime.UtcNow;
-                item.CreateAt = result.CreateAt;
+
 
                 _context.Entry(result).CurrentValues.SetValues(item);
                 await _context.SaveChangesAsync();

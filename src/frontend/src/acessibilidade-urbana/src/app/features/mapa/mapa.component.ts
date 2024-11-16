@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as maplibregl from 'maplibre-gl';
+import { PontosDeAcessibilidadeService } from '../../services/PontosDeAcessibilidade.service';
 
 @Component({
   selector: 'app-mapa',
@@ -15,7 +16,7 @@ export class MapaComponent implements AfterViewInit {
   private markers: maplibregl.Marker[] = []; // Array para armazenar marcadores
 
 
-  constructor() { }
+  constructor( private readonly service: PontosDeAcessibilidadeService) { }
 
   ngAfterViewInit(): void {
     // Inicializar o mapa
@@ -23,10 +24,13 @@ export class MapaComponent implements AfterViewInit {
     const mapStyle = 'https://maps.geoapify.com/v1/styles/positron/style.json';
     const style = `${mapStyle}?apiKey=${myAPIKey}`
 
+
+
+
     this.map = new maplibregl.Map({
       container: 'map', // ID do elemento HTML
       style: style, // Estilo do mapa (OpenStreetMap de exemplo)
-      center: [-46.625290, -23.533773], // Coordenadas iniciais [long, lat]
+      center: [-44.040192, -19.98848], // Coordenadas iniciais [long, lat]
       zoom: 12 // Nível de zoom inicial
     });
 
@@ -47,15 +51,17 @@ export class MapaComponent implements AfterViewInit {
     const east = bounds.getEast();
     const west = bounds.getWest();
 
+
     // Limpar marcadores antigos
     this.markers.forEach(marker => marker.remove());
     this.markers = [];
 
     // Buscar novos pontos do backend
-    this.accessibilityService.getPoints(north, south, east, west).subscribe(points => {
+    this.service.getPoints(north, south, east, west).subscribe(points => {
       points.forEach(point => {
+        debugger
         const marker = new maplibregl.Marker()
-          .setLngLat([point.longitude, point.latitude])
+          .setLngLat([point.cordx, point.cordy])
           .setPopup(new maplibregl.Popup().setText(point.description)) // Opcional: adicionar popup
           .addTo(this.map);
 

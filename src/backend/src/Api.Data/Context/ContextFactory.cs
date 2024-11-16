@@ -7,9 +7,14 @@ namespace Infra.UPX4.Data.Context
     {
         public MyContext CreateDbContext(string[] args)
         {
-            var connectionString = "Data Source=mydatabase.db";
+            // String de conexão para PostgreSQL
+            var connectionString = "Host=localhost;Port=5432;Database=upx4;Username=postgres;Password=postgres";
+
             var optionsBuilder = new DbContextOptionsBuilder<MyContext>();
-            optionsBuilder.UseSqlite(connectionString);
+
+            // Configurar o provedor do PostgreSQL
+            optionsBuilder.UseNpgsql(connectionString);
+
             return new MyContext(optionsBuilder.Options);
         }
     }

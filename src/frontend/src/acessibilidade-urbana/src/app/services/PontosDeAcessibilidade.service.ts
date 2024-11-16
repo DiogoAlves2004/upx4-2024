@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../enviroments/enviroments.local';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PontosDeAcessibilidadeService {
-  private apiUrl = 'https://seu-backend.com/accessibility-points';
+  private apiUrl = environment.apiUrl + '/pontosdeacessibilidade';
 
   constructor(private http: HttpClient) {}
 
