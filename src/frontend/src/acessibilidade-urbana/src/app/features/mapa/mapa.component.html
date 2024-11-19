@@ -1,1 +1,37 @@
-<div id="map" style="width: 100%; height: 100vh;"></div>
+<div style="width: 100vw; height: 100vh;" class="flex flex-column flex-nowrap">
+  <div class="w-full absolute" style="top: 10px; left: 0; z-index: 10000;" >
+    <app-toolbar (onAddicionarPonto)="adicionarPontoHandle()" />
+
+      <p-sidebar [(visible)]="sidebarVisible" [modal]="false" [closeOnEscape]="false">
+          <h3>Criar ponto de acessibilidade</h3>
+
+          <span class="pi pi-info-circle"></span>
+          <span>Click no mapa, no ponto em que deseja adicionar!</span>
+
+          <upx-input-text [formGroup]="addPontoFormGroup" formControlName="nome" label="Nome"  />
+
+
+
+          <upx-input-text [formGroup]="addPontoFormGroup" formControlName="descricaopontodeacessibilidade" label="Descrição" />
+
+            @if(addPontoFormGroup.get('endereco')?.value){
+              <Span>endereço: {{ addPontoFormGroup.get('endereco')?.value }}</Span>
+            }
+
+          <div class="flex flex-row flex-nowrap">
+            <button pButton type="button" label="Salvar" (click)="salvarPonto()" class="w-full"></button>
+            <button pButton type="button" label="Cancelar" (click)="onCloseToast($event)" class="w-full"></button>
+          </div>
+
+
+        </p-sidebar>
+
+    </div>
+
+
+
+
+
+  <div id="map" class="h-full w-full"></div>
+
+</div>

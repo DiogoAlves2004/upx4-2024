@@ -1,0 +1,9 @@
+namespace Infra.UPX4.Domain.Entities {
+	export interface PontoDeAcessibilidadeEntity {
+		descricaopontodeacessibilidade: string;
+		cordx: number;
+		cordy: number;
+		idusuariocriador: string;
+		idicone: string;
+	}
+}

@@ -20,5 +20,5 @@ export class UpxInputTextComponent {
 
   formGroup = input.required<FormGroup>()
   formControlName = input.required<string>()
-
+  label = input.required<string>()
 }
