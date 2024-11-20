@@ -17,8 +17,10 @@ import { ButtonModule } from 'primeng/button';
   ],
 })
 export class UpxInputTextComponent {
-  @Input() label!: string;
   @Input() maxLength: number = 100
+  formGroup = input.required<FormGroup>()
+  formControlName = input.required<string>()
+  label = input.required<string>()
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -27,7 +29,4 @@ export class UpxInputTextComponent {
     this.cdr.detectChanges();
   }
 
-  formGroup = input.required<FormGroup>()
-  formControlName = input.required<string>()
-  label = input.required<string>()
 }
