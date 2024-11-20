@@ -1,0 +1,20 @@
+<div class="w-full h-full" id="login-container">
+  <div><img src="../../../assets/images/logo.png" alt="" /></div>
+
+  <div>
+    <upx-input-text
+      class="w-5rem"
+      [formGroup]="formGroup"
+      formControlName="email"
+      [label]="'E-mail'"
+      [maxLength]="100"
+    />
+    <upx-input-text
+      class="w-5rem"
+      [formGroup]="formGroup"
+      formControlName="senha"
+      [label]="'Senha'"
+      [maxLength]="40"
+    />
+  </div>
+</div>

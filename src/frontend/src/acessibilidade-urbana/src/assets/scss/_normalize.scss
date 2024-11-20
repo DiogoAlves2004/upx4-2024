@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  overflow: hidden;
+  list-style-type: none;
+  color: black;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+img {
+  border-style: none;
+}
+
+ol,
+ul {
+  list-style-type: none;
+  color: black;
+}

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@angular/forms": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@angular/router": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^5.1.4"
+  }
+}

@@ -5,10 +5,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { UpxInputTextComponent } from "../../features-components/upx-input-text/upx-input-text.component";
 
 @Component({
-  selector: 'app-loguin',
+  selector: 'app-login',
   standalone: true,
-  templateUrl: './loguin.component.html',
-  styleUrl: './loguin.component.scss',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
   imports: [
     CommonModule,
     FormsModule,

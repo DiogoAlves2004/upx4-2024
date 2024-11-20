@@ -1,0 +1,12 @@
+@import "../../../styles";
+@import "../../../assets/scss/fuse.scss";
+
+#login-container {
+  background-color: $primary-color;
+}
+
+body {
+  font-family: Arial;
+  background-color: #fff;
+  margin: 5px, 10px;
+}
