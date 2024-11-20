@@ -1,0 +1,33 @@
+@import "../../../assets/scss/fuse.scss";
+
+#form-group {
+  padding: 5px 10px;
+  input {
+    border: none;
+    border-bottom: 1px solid $secondary-color;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    padding: 3px 5px;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border-radius: 0;
+    font-size: 1.5rem;
+    font-weight: 100;
+    &:focus {
+      border: none;
+      outline: none;
+      border-bottom: 1px solid white;
+      box-shadow: none;
+    }
+  }
+
+  label {
+    color: white;
+    font-size: 1.3rem;
+    margin: 0 0 3px 5px;
+    padding: 0;
+  }
+}
