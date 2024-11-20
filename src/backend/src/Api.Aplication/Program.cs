@@ -26,7 +26,13 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Use o CORS na aplicação
-app.UseCors("AllowAll");
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true)
+    .AllowCredentials()
+);
+
 
 if (app.Environment.IsDevelopment())
 {

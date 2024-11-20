@@ -1,20 +1,52 @@
 <div class="w-full h-full" id="login-container">
-  <div><img src="../../../assets/images/logo.png" alt="" /></div>
-
-  <div>
-    <upx-input-text
-      class="w-5rem"
-      [formGroup]="formGroup"
-      formControlName="email"
-      [label]="'E-mail'"
-      [maxLength]="100"
-    />
-    <upx-input-text
-      class="w-5rem"
-      [formGroup]="formGroup"
-      formControlName="senha"
-      [label]="'Senha'"
-      [maxLength]="40"
-    />
+  <app-modal
+    title="Atenção!"
+    [open]="modalOpen"
+    (OnCloseEvent)="handleCloseModal()"
+    >{{ modalMessage }}</app-modal
+  >
+  <div id="logo-container">
+    <div>
+      <img
+        src="assets/images/logo.png"
+        alt="Logo acessibilidade"
+        id="img-logo"
+      />
+    </div>
+    <div><h1 id="title">Acessibilidade Urbana</h1></div>
   </div>
+
+  <form
+    id="loginForm"
+    name="loginForm"
+    [formGroup]="form"
+    (ngSubmit)="onLoginFormSubmit(form)"
+  >
+    <div id="inputs-container">
+      <upx-input-text
+        [label]="'E-mail'"
+        [maxLength]="emailMaxLength"
+        [controlName]="'email'"
+        [formGroup]="form"
+      />
+      <upx-input-text
+        [label]="'Senha'"
+        [maxLength]="passwordMaxLength"
+        [controlName]="'password'"
+        [formGroup]="form"
+        type="password"
+      />
+    </div>
+
+    <div id="buttons-container">
+      <button id="btn-login" class="btn" type="submit" [disabled]="!form.valid">
+        Entrar
+      </button>
+
+      <button id="btn-signup" class="btn" (click)="openModal()" type="button">
+        Cadastre-se
+      </button>
+      <button id="btn-forgot-password" type="button">Esqueci minha senha</button>
+    </div>
+  </form>
 </div>

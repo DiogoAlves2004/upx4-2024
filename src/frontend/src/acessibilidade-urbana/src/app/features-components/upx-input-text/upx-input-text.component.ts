@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, Input, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -13,20 +13,13 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
   ],
 })
 export class UpxInputTextComponent {
-  @Input() maxLength: number = 100
-  formGroup = input.required<FormGroup>()
-  formControlName = input.required<string>()
-  label = input.required<string>()
-
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  ngOnChanges() {
-    // Força a detecção de mudanças
-    this.cdr.detectChanges();
-  }
-
+  @Input() label!: string;
+  @Input() maxLength: number = 100;
+  @Input() formGroup!: FormGroup;
+  @Input() controlName: string = '';
+  @Input() type: string = 'text';
 }

@@ -1,0 +1,14 @@
+@if (open) {
+<div id="backdrop">
+  <div id="modal">
+    <div id="header">
+      <h1>{{ title }}</h1>
+      <button (click)="onClose()">X</button>
+    </div>
+    <div id="content">
+      <ng-content></ng-content>
+    </div>
+    <div id="footer"></div>
+  </div>
+</div>
+}

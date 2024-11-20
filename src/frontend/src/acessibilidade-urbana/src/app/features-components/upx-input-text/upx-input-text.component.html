@@ -1,6 +1,13 @@
-<div [formGroup]="formGroup()" id="form-group"class="flex flex-column flex-nowrap">
-
-  <label for="username">{{label()}}</label>
-  <input type="text" pInputText [formControlName]="formControlName()" maxlength="{{maxLength}}"/>
-
+<div
+  [formGroup]="formGroup"
+  id="form-group"
+  class="flex flex-column flex-nowrap"
+>
+  <label for="username">{{ label }}</label>
+  <input
+    [type]="type"
+    pInputText
+    [maxLength]="maxLength"
+    [formControlName]="controlName"
+  />
 </div>

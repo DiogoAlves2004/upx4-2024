@@ -22,7 +22,7 @@ namespace Api.UPX4.Controllers
 
 
         [HttpGet]
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         public async Task<IActionResult> GetAll(Guid id)
         {
 
