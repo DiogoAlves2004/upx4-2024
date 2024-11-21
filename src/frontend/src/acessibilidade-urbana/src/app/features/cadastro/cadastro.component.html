@@ -1,0 +1,72 @@
+<div class="w-full h-full" id="cadastro-container">
+  <app-modal
+    title="Atenção!"
+    [open]="modalOpen"
+    (OnCloseEvent)="handleCloseModal()"
+    >{{ modalMessage }}</app-modal
+  >
+
+  <div id="title">
+    <h1>Cadastre-se</h1>
+  </div>
+
+  <form
+    id="cadastroForm"
+    name="cadastroForm"
+    [formGroup]="form"
+    (ngSubmit)="onLoginFormSubmit(form)"
+  >
+    <div id="inputs-container">
+      <upx-input-text
+        [label]="'Nome'"
+        [maxLength]="nameMaxLength"
+        [controlName]="'name'"
+        [formGroup]="form"
+      />
+      <upx-input-text
+        [label]="'E-mail'"
+        [maxLength]="emailMaxLength"
+        [controlName]="'email'"
+        [formGroup]="form"
+      />
+      <upx-input-text
+        [label]="'Senha'"
+        [maxLength]="passwordMaxLength"
+        [controlName]="'password'"
+        [formGroup]="form"
+        type="password"
+      />
+      <div>
+        <upx-input-text
+          [label]="'Confirme sua senha'"
+          [maxLength]="passwordMaxLength"
+          [controlName]="'confirmPassword'"
+          [formGroup]="form"
+          type="password"
+        />
+        <ng-container
+          *ngIf="
+            form.controls['confirmPassword'].errors?.['passwordMatch'] === true
+          "
+        >
+          <p class="error-message">As senhas devem ser iguais</p>
+        </ng-container>
+      </div>
+    </div>
+
+    <div id="buttons-container">
+      <button
+        id="btn-register"
+        class="btn"
+        type="submit"
+        [disabled]="!form.valid"
+      >
+        Cadastrar
+      </button>
+
+      <button id="btn-back" class="btn" type="button" (click)="back()">
+        Voltar
+      </button>
+    </div>
+  </form>
+</div>

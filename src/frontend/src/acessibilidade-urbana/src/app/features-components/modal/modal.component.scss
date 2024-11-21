@@ -27,6 +27,7 @@
       padding: 20px;
       font-size: 1.3rem;
       font-weight: bold;
+
       button {
         padding: 15px;
         font-size: 20px;
@@ -43,10 +44,8 @@
       padding: 20px;
       overflow-y: auto;
       height: calc(100% - 100px);
-      font-size: 1.2rem;
-    }
-
-    #footer {
+      font-size: 1.3rem;
+      text-align: center;
     }
   }
 }

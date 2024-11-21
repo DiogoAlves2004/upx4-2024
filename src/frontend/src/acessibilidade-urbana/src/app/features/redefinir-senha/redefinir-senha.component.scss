@@ -1,29 +1,24 @@
 @import "../../../styles";
 @import "../../../assets/scss/fuse.scss";
 
-#login-container {
+#cadastro-container {
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: $primary-color;
 
-  #logo-container {
+  #title {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 5px;
     margin-top: 0;
-
-    #title {
-      font-weight: 600;
-      color: white;
-    }
-
-    #img-logo {
-      width: 100px;
-      height: 100px;
+    color: white;
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
     }
   }
 
@@ -54,13 +49,14 @@
     box-shadow: none;
   }
 
-  #btn-login {
-    background-color: $green-login;
+  #btn-reset-password {
+    background-color: white;
     &:disabled {
       background-color: $gray-disabled;
     }
   }
-  #btn-forgot-password {
+
+  #btn-back {
     width: 100%;
     padding: 15px;
     font-size: 20px;

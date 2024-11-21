@@ -1,24 +1,18 @@
-<div class="w-full h-full" id="login-container">
+<div class="w-full h-full" id="cadastro-container">
   <app-modal
     title="Atenção!"
     [open]="modalOpen"
     (OnCloseEvent)="handleCloseModal()"
     >{{ modalMessage }}</app-modal
   >
-  <div id="logo-container">
-    <div>
-      <img
-        src="assets/images/logo.png"
-        alt="Logo acessibilidade"
-        id="img-logo"
-      />
-    </div>
-    <div><h1 id="title">Acessibilidade Urbana</h1></div>
+
+  <div id="title">
+    <h1>Redefinir senha</h1>
   </div>
 
   <form
-    id="loginForm"
-    name="loginForm"
+    id="cadastroForm"
+    name="cadastroForm"
     [formGroup]="form"
     (ngSubmit)="onLoginFormSubmit(form)"
   >
@@ -30,7 +24,14 @@
         [formGroup]="form"
       />
       <upx-input-text
-        [label]="'Senha'"
+        [label]="'Nova senha'"
+        [maxLength]="passwordMaxLength"
+        [controlName]="'password'"
+        [formGroup]="form"
+        type="password"
+      />
+      <upx-input-text
+        [label]="'Confirme sua nova senha'"
         [maxLength]="passwordMaxLength"
         [controlName]="'password'"
         [formGroup]="form"
@@ -39,15 +40,17 @@
     </div>
 
     <div id="buttons-container">
-      <button id="btn-login" class="btn" type="submit" [disabled]="!form.valid">
-        Entrar
+      <button
+        id="btn-reset-password"
+        class="btn"
+        type="sumbmit"
+        [disabled]="!form.valid"
+      >
+        Redefinir senha
       </button>
 
-      <button id="btn-signup" class="btn" (click)="register()" type="button">
-        Cadastre-se
-      </button>
-      <button id="btn-forgot-password" (click)="forgotPassword()" type="button">
-        Esqueci minha senha
+      <button id="btn-back" class="btn" type="button" (click)="back()">
+        Voltar
       </button>
     </div>
   </form>
