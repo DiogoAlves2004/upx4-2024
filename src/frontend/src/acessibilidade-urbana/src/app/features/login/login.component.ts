@@ -12,7 +12,7 @@ import { UpxInputTextComponent } from '../../features-components/upx-input-text/
 import { AuthorizationService } from '../../shared/services/authorization/authorization.service';
 import LoginPayload from '../../shared/services/authorization/models/login-payload';
 import { Router } from '@angular/router';
-import { ModalComponent } from "../../features-components/modal/modal.component";
+import { ModalComponent } from '../../features-components/modal/modal.component';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -24,20 +24,28 @@ import { ModalComponent } from "../../features-components/modal/modal.component"
     ReactiveFormsModule,
     InputTextModule,
     UpxInputTextComponent,
-    ModalComponent
-],
+    ModalComponent,
+  ],
 })
 export class LoginComponent {
   form!: FormGroup;
   modalOpen: boolean = false;
-  modalMessage: string = "";
+  modalMessage: string = '';
 
-  constructor(private fb: FormBuilder, private service: AuthorizationService,private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private service: AuthorizationService,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       // Assign value to form property
       email: [
         '',
-        [Validators.required, Validators.maxLength(this.emailMaxLength),Validators.email],
+        [
+          Validators.required,
+          Validators.maxLength(this.emailMaxLength),
+          Validators.email,
+        ],
       ],
       password: [
         '',
@@ -53,15 +61,17 @@ export class LoginComponent {
   readonly password = this.form?.get('password')!;
 
   async onLoginFormSubmit(data: FormGroup) {
-    const loginRequest:LoginPayload = { email: data.value.email, password: data.value.password };
+    const loginRequest: LoginPayload = {
+      email: data.value.email,
+      password: data.value.password,
+    };
     try {
       const res = await this.service.Login(loginRequest);
       if (res.authenticated) {
         this.router.navigate(['/mapa']);
-      } 
-    }
-    catch {
-      this.modalMessage = "Usuário ou senha inválidos";
+      }
+    } catch {
+      this.modalMessage = 'Usuário ou senha inválidos';
       this.modalOpen = true;
     }
   }
@@ -83,4 +93,3 @@ export class LoginComponent {
   }
 }
 export { Component };
-

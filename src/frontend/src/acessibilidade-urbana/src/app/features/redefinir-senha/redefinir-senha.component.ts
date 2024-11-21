@@ -26,25 +26,33 @@ import LoginPayload from '../../shared/services/authorization/models/login-paylo
     ModalComponent,
   ],
   templateUrl: './redefinir-senha.component.html',
-  styleUrl: './redefinir-senha.component.scss'
+  styleUrl: './redefinir-senha.component.scss',
 })
 export class RedefinirSenhaComponent {
   form!: FormGroup;
   modalOpen: boolean = false;
   modalMessage: string = '';
 
-  constructor(private fb: FormBuilder, private service: AuthorizationService,private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private service: AuthorizationService,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       // Assign value to form property
       email: [
         '',
-        [Validators.required, Validators.maxLength(this.emailMaxLength), Validators.email],
+        [
+          Validators.required,
+          Validators.maxLength(this.emailMaxLength),
+          Validators.email,
+        ],
       ],
       password: [
         '',
         [Validators.required, Validators.maxLength(this.passwordMaxLength)],
       ],
-      confirmPassword: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required]],
     });
   }
 
@@ -52,20 +60,22 @@ export class RedefinirSenhaComponent {
   readonly passwordMaxLength = 30;
 
   async onLoginFormSubmit(data: FormGroup) {
-    const loginRequest:LoginPayload = { email: data.value.email, password: data.value.password };
+    const loginRequest: LoginPayload = {
+      email: data.value.email,
+      password: data.value.password,
+    };
     try {
       const res = await this.service.Login(loginRequest);
       if (res.authenticated) {
         this.router.navigate(['/login']);
-        this.modalMessage = "Senha redefinida com sucesso";
-      } 
-    }
-    catch {
-      this.modalMessage = "E-mail ou senha inválidos";
+        this.modalMessage = 'Senha redefinida com sucesso';
+      }
+    } catch {
+      this.modalMessage = 'E-mail ou senha inválidos';
       this.modalOpen = true;
     }
   }
-  
+
   handleCloseModal() {
     this.modalOpen = false;
   }
@@ -75,4 +85,3 @@ export class RedefinirSenhaComponent {
   }
 }
 export { Component };
-

@@ -38,7 +38,11 @@ export class CadastroComponent {
   modalOpen: boolean = false;
   modalMessage: string = '';
 
-  constructor(private fb: FormBuilder, private service: UserService,private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private service: UserService,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       // Assign value to form property
       name: [
@@ -47,14 +51,24 @@ export class CadastroComponent {
       ],
       email: [
         '',
-        [Validators.required, Validators.maxLength(this.emailMaxLength), Validators.email],
+        [
+          Validators.required,
+          Validators.maxLength(this.emailMaxLength),
+          Validators.email,
+        ],
       ],
       password: [
         '',
         [Validators.required, Validators.maxLength(this.passwordMaxLength)],
       ],
-      confirmPassword: ['', [Validators.required, Validators.maxLength(this.passwordMaxLength), this.validatePasswordMatch]
-    ]
+      confirmPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(this.passwordMaxLength),
+          this.validatePasswordMatch,
+        ],
+      ],
     });
   }
 
@@ -68,29 +82,35 @@ export class CadastroComponent {
   readonly confirmPassword = this.form?.get('confirmPassword')!;
 
   async onLoginFormSubmit(data: FormGroup) {
-    const signupRequest:SignupPayload = { id: guidv4(), name: data.value.name, email: data.value.email, password: data.value.password };
+    const signupRequest: SignupPayload = {
+      id: guidv4(),
+      name: data.value.name,
+      email: data.value.email,
+      password: data.value.password,
+    };
     try {
       const res = await this.service.Signup(signupRequest);
       if (res.id) {
-        this.modalMessage = "Cadastro realizado com sucesso";
+        this.modalMessage = 'Cadastro realizado com sucesso';
         this.modalOpen = true;
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 2000);
-      } 
-    }
-    catch {
-      this.modalMessage = "Ocorreu um erro durante o cadastro";
+      }
+    } catch {
+      this.modalMessage = 'Ocorreu um erro durante o cadastro';
       this.modalOpen = true;
     }
   }
 
-  validatePasswordMatch = (control: AbstractControl): {[key: string]: any} | null => {
+  validatePasswordMatch = (
+    control: AbstractControl
+  ): { [key: string]: any } | null => {
     const password = this.form?.get('password')?.value as string;
     const passwordConfirm = control.value as string;
-  
+
     if (password !== passwordConfirm) {
-      return {passwordMatch: true};
+      return { passwordMatch: true };
     }
     return null;
   };

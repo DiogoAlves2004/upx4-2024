@@ -6,10 +6,10 @@ import { NgModule } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.scss'
+  styleUrl: './modal.component.scss',
 })
 export class ModalComponent {
-  @Input() title: string = "";
+  @Input() title: string = '';
   @Input() open: boolean = true;
   @Output() OnCloseEvent = new EventEmitter();
 
