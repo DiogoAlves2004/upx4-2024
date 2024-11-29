@@ -1,18 +1,48 @@
-<div style="width: 100vw; height: 100vh" class="flex flex-column flex-nowrap">
-  <div class="w-full absolute" style="top: 10px; left: 0; z-index: 10000">
+<div style="width: 100vw; height: 100vh;" class="flex flex-column flex-nowrap ">
+  <div class="w-full absolute flex justify-content-center " style="top: 25px; left: 0; z-index: 10000;" >
     <app-toolbar (onAddicionarPonto)="adicionarPontoHandle()" />
+  </div>
 
-    <p-sidebar
-      [(visible)]="sidebarVisible"
-      [modal]="false"
-      [closeOnEscape]="false"
-    >
-      <h3>Criar ponto de acessibilidade</h3>
+  <div class="w-full absolute " style="top: 25px; left: 0; z-index: 1;" >
+    <p-sidebar [(visible)]="sidebarVisible" [modal]="false" [closeOnEscape]="false" >
+      <div class=" flex flex-column justify-content-between " style="height: 70%; width: 100%;" [formGroup]="addPontoFormGroup" >
 
-      <span class="pi pi-info-circle"></span>
-      <span>Click no mapa, no ponto em que deseja adicionar!</span>
 
-      <upx-input-text
+      <div>
+        <h3>Criar ponto de acessibilidade</h3>
+        <span class="pi pi-info-circle"></span>
+        <span>Click no mapa, no ponto em que deseja adicionar!</span>
+      </div>
+
+
+      <div class="grid formgrid p-fluid w-full">
+        <p-floatLabel class="col-9 field">
+            <input pInputText id="nome" formControlName="nome" />
+            <label for="nome">Nome</label>
+        </p-floatLabel>
+        <div class="col-3 field">
+          <app-icon-picker (onIconChange)="setIcon($event)" />
+        </div>
+
+        <p-floatLabel class="col-12 field mt-2">
+            <input pInputText id="descricaopontodeacessibilidade" formControlName="descricaopontodeacessibilidade"  />
+            <label for="descricaopontodeacessibilidade">Descrição</label>
+        </p-floatLabel>
+
+      </div>
+
+      <div>
+        @if(addPontoFormGroup.get('endereco')?.value){
+          <Span>Endereço selecionado:</Span>
+          <Span>{{ addPontoFormGroup.get('endereco')?.value }}</Span>
+
+        }
+      </div>
+
+
+    </div>
+
+      <!-- <upx-input-text
         [formGroup]="addPontoFormGroup"
         formControlName="nome"
         label="Nome"
@@ -22,30 +52,20 @@
         [formGroup]="addPontoFormGroup"
         formControlName="descricaopontodeacessibilidade"
         label="Descrição"
-      />
+      /> -->
 
-      @if(addPontoFormGroup.get('endereco')?.value){
-      <Span>endereço: {{ addPontoFormGroup.get("endereco")?.value }}</Span>
-      }
-
-      <div class="flex flex-row flex-nowrap">
-        <button
-          pButton
-          type="button"
-          label="Salvar"
-          (click)="salvarPonto()"
-          class="w-full"
-        ></button>
-        <button
-          pButton
-          type="button"
-          label="Cancelar"
-          (click)="onCloseToast($event)"
-          class="w-full"
-        ></button>
+      <div class="flex flex-row flex-nowrap mt-4 gap-2">
+        <button [classList]="'p-2'" pButton severity="success" type="button" label="Salvar" (click)="salvarPonto()" class="w-full"></button>
+        <button [classList]="'p-2'" pButton severity="danger" type="button" label="Cancelar" (click)="onCloseToast($event)" class="w-full"></button>
       </div>
+
+
     </p-sidebar>
   </div>
 
   <div id="map" class="h-full w-full"></div>
+
 </div>
+
+
+

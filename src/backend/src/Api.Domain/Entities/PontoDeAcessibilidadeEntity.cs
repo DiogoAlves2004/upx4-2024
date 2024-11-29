@@ -10,6 +10,6 @@ namespace Infra.UPX4.Domain.Entities
 
         public required string idusuariocriador { get; set; }
 
-        public required string idicone { get; set; }
+        public required string icone { get; set; }
     }
 }

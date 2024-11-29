@@ -1,0 +1,15 @@
+@media only screen and (max-width: 767px) {
+  .toolbar {
+    width: 90vw;
+    min-width: none;
+    max-width: none;
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .toolbar {
+    width: 50vw;
+    min-width: none;
+    max-width: none;
+  }
+}

@@ -21,7 +21,7 @@ namespace Infra.UPX4.Domain.Dto
         public Guid idusuariocriador { get; set; }
 
         [Required]
-        public Guid idicone { get; set; }
+        public string icone { get; set; }
 
     }
 }

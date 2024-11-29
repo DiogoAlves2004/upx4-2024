@@ -1,0 +1,16 @@
+<p-button (onClick)="op.toggle($event)" [icon]="'pi ' + selectedIcon"></p-button>
+<p-overlayPanel #op>
+  <ng-template pTemplate="content">
+    <div class="flex flex-wrap gap-3 w-25rem h-25rem overflow-x-scroll" style="z-index: 999999999999;">
+      <div *ngFor="let item of iconOptions; track $index">
+        <div
+          (click)="selectIcon(item.icon)"
+          style="width: 50px; height: 50px; cursor: pointer;"
+          class="icone hover:shadow-1 transition-delay-100 flex border-round justify-content-center align-items-center"
+        >
+          <span class="pi" [ngClass]="item.icon"></span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-overlayPanel>
